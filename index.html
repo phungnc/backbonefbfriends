@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+  
+  <head>
+    <title>Small Facebook-Load-Friends Demo Using Backbone.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">    
+    <link rel="stylesheet" href="assets/css/bootstrap-editable.css">
+  <style type="text/css">
+    img {vertical-align: top; top:10px; left: 10px}
+    ul {list-style-type:none;}
+    ul li {position: relative; border-bottom: 1px solid #e8e8e8; }
+    .avatar {height: 50px; width: 50px;border-radius:5px;position: absolute;}
+    .group {font-size: 11px;}
+    #fbFriends .row { padding: 10px; margin-left: 60px;}
+  </style>
+  </head>
+  
+  <body>
+    <div id="fb-root"></div> 
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">Backbone-Facebook</a>
+          <div class="navbar-content">
+            <ul class="nav"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="container">
+        <h4>This is small facebook-load-friends demo using backbone.js</h4>
+        <p>The Model is used to contain friend's data and the Collection is the list
+          of friends. Demo use FQL Multi-Query to get Friend Group</p>
+        <p>The Collection works with the facebook Javascript SDK</p>
+        <p>This is client side only demo.</p>
+        <p>The source code is available in
+          <a href="https://github.com/phungnc/">this repository </a> on GitHub</p>        
+        <div id="content">
+          <button type="button" id="load-fb-friends" class="btn btn-block btn-primary" data-loading-text="<i class='icon-spinner icon-spin'></i> Loading...">Load Facebook Friends</button>
+          <ul id="fbFriends"></ul>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/template" id="fbFriendTemplate">
+      <div class="row"> 
+        <div class="friend-header">
+        <img class="avatar" src="<%= avatar === null ? 'assets/pics/ava.gif' : avatar %>" />
+          <strong class="fullname"><%= name %></strong>
+        </div>
+        <p class="group"><%= group %></p>
+      </div>
+    </script>
+
+    <!-- script file adding start -->
+    <!-- load lib -->
+    <script src="js/libs/jquery.js"></script>
+    <script src="js/libs/underscore.js"></script>
+    <script src="js/libs/backbone.js"></script>
+
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- load resource -->
+    <script src="js/app.js"></script>
+    <script src="js/utils.js"></script>
+
+    <script src="js/models/fbFriendModel.js"></script>
+    <script src="js/collections/fbFriends.js"></script>
+
+    <!-- Backbone View -->
+    <script src="js/views/FBFriendListView.js"></script>
+    <script src="js/views/FBFriendView.js"></script>
+
+    <!-- script file adding end -->    
+  </body>
+
+</html>
